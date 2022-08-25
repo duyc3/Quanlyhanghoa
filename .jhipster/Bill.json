@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20220714035306",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "bill",
+  "fields": [
+    {
+      "fieldName": "createDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Bill",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "billDetails",
+      "otherEntityRelationshipName": "bill",
+      "relationshipName": "billDetails",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "bill",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "staff",
+      "otherEntityRelationshipName": "bill",
+      "relationshipName": "staff",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="staff">
+      <h2 data-cy="staffDetailsHeading"><span jhiTranslate="quanlyhangApp.staff.detail.title">Staff</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ staff.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.staff.nameStaff">Name Staff</span></dt>
+        <dd>
+          <span>{{ staff.nameStaff }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.staff.ageStaff">Age Staff</span></dt>
+        <dd>
+          <span>{{ staff.ageStaff }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.staff.addressStaff">Address Staff</span></dt>
+        <dd>
+          <span>{{ staff.addressStaff }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.staff.numberphoneStaff">Numberphone Staff</span></dt>
+        <dd>
+          <span>{{ staff.numberphoneStaff }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/staff', staff.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

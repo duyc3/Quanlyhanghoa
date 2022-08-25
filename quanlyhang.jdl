@@ -1,0 +1,52 @@
+entity Store {
+    nameStore String required
+    addressStore String   required
+    createDate LocalDate 
+    createBy String
+ 
+}
+
+entity Product{
+    nameProduct String required
+    price BigDecimal required
+    createDate LocalDate 
+    createBy String
+    note String
+}
+
+entity Bill {
+    CreateDate LocalDate 
+    CreateBy String
+}
+
+entity Customer{
+    nameCustomer String required
+    ageCustomer Integer required
+    addressCustomer String required
+	numberphoneCustomer Integer required
+  
+}
+entity BillDetails {
+    amount Integer required
+    type String required
+    createDate LocalDate 
+    createBy String
+}
+entity Staff {
+    nameStaff String required
+	ageStaff Integer required
+	addressStaff String required
+	numberphoneStaff Integer required
+	
+}
+relationship OneToMany {
+    Product to BillDetails
+    Bill  to BillDetails
+    Customer to Bill
+    Staff to Bill
+}
+relationship ManyToMany {
+    Store to Product
+}
+
+

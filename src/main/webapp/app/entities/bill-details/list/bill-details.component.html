@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="BillDetailsHeading">
+    <span jhiTranslate="quanlyhangApp.billDetails.home.title">Bill Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="quanlyhangApp.billDetails.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-bill-details"
+        [routerLink]="['/bill-details/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="quanlyhangApp.billDetails.home.createLabel"> Create a new Bill Details </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="billDetails?.length === 0">
+    <span jhiTranslate="quanlyhangApp.billDetails.home.notFound">No billDetails found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="billDetails && billDetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.billDetails.amount">Amount</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.billDetails.type">Type</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.billDetails.createDate">Create Date</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.billDetails.createBy">Create By</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.billDetails.product">Product</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.billDetails.bill">Bill</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let billDetails of billDetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/bill-details', billDetails.id, 'view']">{{ billDetails.id }}</a>
+          </td>
+          <td>{{ billDetails.amount }}</td>
+          <td>{{ billDetails.type }}</td>
+          <td>{{ billDetails.createDate | formatMediumDate }}</td>
+          <td>{{ billDetails.createBy }}</td>
+          <td>
+            <div *ngIf="billDetails.product">
+              <a [routerLink]="['/product', billDetails.product?.id, 'view']">{{ billDetails.product?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="billDetails.bill">
+              <a [routerLink]="['/bill', billDetails.bill?.id, 'view']">{{ billDetails.bill?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/bill-details', billDetails.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/bill-details', billDetails.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(billDetails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

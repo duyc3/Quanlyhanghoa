@@ -1,0 +1,47 @@
+{
+  "applications": "*",
+  "changelogDate": "20220714035308",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "bill_details",
+  "fields": [
+    {
+      "fieldName": "amount",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "BillDetails",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "billDetails",
+      "relationshipName": "product",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "bill",
+      "otherEntityRelationshipName": "billDetails",
+      "relationshipName": "bill",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

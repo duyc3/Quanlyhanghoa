@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20220714035305",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "product",
+  "fields": [
+    {
+      "fieldName": "nameProduct",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Product",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "billDetails",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "billDetails",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "store",
+      "otherEntityRelationshipName": "product",
+      "ownerSide": false,
+      "relationshipName": "store",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

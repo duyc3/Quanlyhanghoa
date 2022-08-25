@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="billDetails">
+      <h2 data-cy="billDetailsDetailsHeading"><span jhiTranslate="quanlyhangApp.billDetails.detail.title">Bill Details</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ billDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.billDetails.amount">Amount</span></dt>
+        <dd>
+          <span>{{ billDetails.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.billDetails.type">Type</span></dt>
+        <dd>
+          <span>{{ billDetails.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.billDetails.createDate">Create Date</span></dt>
+        <dd>
+          <span>{{ billDetails.createDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.billDetails.createBy">Create By</span></dt>
+        <dd>
+          <span>{{ billDetails.createBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.billDetails.product">Product</span></dt>
+        <dd>
+          <div *ngIf="billDetails.product">
+            <a [routerLink]="['/product', billDetails.product?.id, 'view']">{{ billDetails.product?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.billDetails.bill">Bill</span></dt>
+        <dd>
+          <div *ngIf="billDetails.bill">
+            <a [routerLink]="['/bill', billDetails.bill?.id, 'view']">{{ billDetails.bill?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bill-details', billDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

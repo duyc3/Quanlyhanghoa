@@ -1,0 +1,81 @@
+<div>
+  <h2 id="page-heading" data-cy="StoreHeading">
+    <span jhiTranslate="quanlyhangApp.store.home.title">Stores</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="quanlyhangApp.store.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-store"
+        [routerLink]="['/store/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="quanlyhangApp.store.home.createLabel"> Create a new Store </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="stores?.length === 0">
+    <span jhiTranslate="quanlyhangApp.store.home.notFound">No stores found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="stores && stores.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.store.nameStore">Name Store</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.store.addressStore">Address Store</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.store.createDate">Create Date</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.store.createBy">Create By</span></th>
+          <th scope="col"><span jhiTranslate="quanlyhangApp.store.product">Product</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let store of stores; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/store', store.id, 'view']">{{ store.id }}</a>
+          </td>
+          <td>{{ store.nameStore }}</td>
+          <td>{{ store.addressStore }}</td>
+          <td>{{ store.createDate | formatMediumDate }}</td>
+          <td>{{ store.createBy }}</td>
+          <td>
+            <span *ngFor="let product of store.products; let last = last">
+              <a class="form-control-static" [routerLink]="['/product', product.id, 'view']">{{ product.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/store', store.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/store', store.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(store)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

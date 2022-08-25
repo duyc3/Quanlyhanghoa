@@ -1,0 +1,28 @@
+{
+  "quanlyhangApp": {
+    "store": {
+      "home": {
+        "title": "Stores",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Store",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Store",
+        "notFound": "No Stores found"
+      },
+      "created": "Một Store mới được tạo với định danh {{ param }}",
+      "updated": "Một Store cập nhật với định danh {{ param }}",
+      "deleted": "Một Store đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Store {{ id }}?"
+      },
+      "detail": {
+        "title": "Store"
+      },
+      "id": "ID",
+      "nameStore": "Name Store",
+      "addressStore": "Address Store",
+      "createDate": "Create Date",
+      "createBy": "Create By",
+      "product": "Product"
+    }
+  }
+}

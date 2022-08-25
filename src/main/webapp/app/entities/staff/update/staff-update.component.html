@@ -1,0 +1,127 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-staff-heading" data-cy="StaffCreateUpdateHeading" jhiTranslate="quanlyhangApp.staff.home.createOrEditLabel">
+        Create or edit a Staff
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="quanlyhangApp.staff.nameStaff" for="field_nameStaff">Name Staff</label>
+          <input type="text" class="form-control" name="nameStaff" id="field_nameStaff" data-cy="nameStaff" formControlName="nameStaff" />
+          <div *ngIf="editForm.get('nameStaff')!.invalid && (editForm.get('nameStaff')!.dirty || editForm.get('nameStaff')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nameStaff')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="quanlyhangApp.staff.ageStaff" for="field_ageStaff">Age Staff</label>
+          <input type="number" class="form-control" name="ageStaff" id="field_ageStaff" data-cy="ageStaff" formControlName="ageStaff" />
+          <div *ngIf="editForm.get('ageStaff')!.invalid && (editForm.get('ageStaff')!.dirty || editForm.get('ageStaff')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ageStaff')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('ageStaff')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="quanlyhangApp.staff.addressStaff" for="field_addressStaff">Address Staff</label>
+          <input
+            type="text"
+            class="form-control"
+            name="addressStaff"
+            id="field_addressStaff"
+            data-cy="addressStaff"
+            formControlName="addressStaff"
+          />
+          <div
+            *ngIf="editForm.get('addressStaff')!.invalid && (editForm.get('addressStaff')!.dirty || editForm.get('addressStaff')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('addressStaff')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="quanlyhangApp.staff.numberphoneStaff" for="field_numberphoneStaff"
+            >Numberphone Staff</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberphoneStaff"
+            id="field_numberphoneStaff"
+            data-cy="numberphoneStaff"
+            formControlName="numberphoneStaff"
+          />
+          <div
+            *ngIf="
+              editForm.get('numberphoneStaff')!.invalid &&
+              (editForm.get('numberphoneStaff')!.dirty || editForm.get('numberphoneStaff')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('numberphoneStaff')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('numberphoneStaff')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

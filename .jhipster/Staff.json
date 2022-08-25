@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20220714035309",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "staff",
+  "fields": [
+    {
+      "fieldName": "nameStaff",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ageStaff",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "addressStaff",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numberphoneStaff",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Staff",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "bill",
+      "otherEntityRelationshipName": "staff",
+      "relationshipName": "bill",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

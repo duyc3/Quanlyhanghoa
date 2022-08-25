@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="product">
+      <h2 data-cy="productDetailsHeading"><span jhiTranslate="quanlyhangApp.product.detail.title">Product</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ product.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.product.nameProduct">Name Product</span></dt>
+        <dd>
+          <span>{{ product.nameProduct }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.product.price">Price</span></dt>
+        <dd>
+          <span>{{ product.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.product.createDate">Create Date</span></dt>
+        <dd>
+          <span>{{ product.createDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.product.createBy">Create By</span></dt>
+        <dd>
+          <span>{{ product.createBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="quanlyhangApp.product.note">Note</span></dt>
+        <dd>
+          <span>{{ product.note }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

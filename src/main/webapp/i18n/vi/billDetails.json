@@ -1,0 +1,29 @@
+{
+  "quanlyhangApp": {
+    "billDetails": {
+      "home": {
+        "title": "Bill Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Bill Details",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Bill Details",
+        "notFound": "No Bill Details found"
+      },
+      "created": "Một Bill Details mới được tạo với định danh {{ param }}",
+      "updated": "Một Bill Details cập nhật với định danh {{ param }}",
+      "deleted": "Một Bill Details đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Bill Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Bill Details"
+      },
+      "id": "ID",
+      "amount": "Amount",
+      "type": "Type",
+      "createDate": "Create Date",
+      "createBy": "Create By",
+      "product": "Product",
+      "bill": "Bill"
+    }
+  }
+}
